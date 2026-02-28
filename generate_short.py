@@ -1,5 +1,5 @@
 import random
-
+import os
 topics = [
 "Space",
 "Ancient History",
@@ -36,3 +36,9 @@ print(script)
 
 with open("short_script.txt","w") as f:
     f.write(script)
+creds = os.getenv("YOUTUBE_CREDENTIALS")
+
+if creds:
+    print("YouTube credentials connected")
+else:
+    print("Missing credentials")
