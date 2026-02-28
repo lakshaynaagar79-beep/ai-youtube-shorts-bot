@@ -1,5 +1,10 @@
 import random
 import os
+import os
+
+api_key = os.getenv("YOUTUBE_API_KEY")
+
+print("API KEY CONNECTED:", api_key is not None)
 topics = [
 "Space",
 "Ancient History",
