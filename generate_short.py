@@ -1,23 +1,35 @@
 import random
 
 topics = [
-"Space facts",
-"History facts",
-"Psychology facts",
-"Money facts",
-"AI facts"
+"Space",
+"Ancient History",
+"Psychology",
+"Money",
+"Technology",
+"Mysteries",
+"Human Body"
+]
+
+facts = [
+"Octopuses have three hearts.",
+"The pyramids are over 4500 years old.",
+"Your brain uses about 20 percent of your body's energy.",
+"Some millionaires wake up at 5 AM daily.",
+"AI can already create music and movies.",
+"The ocean is mostly unexplored.",
+"You blink around 20000 times a day."
 ]
 
 topic = random.choice(topics)
 
 script = f"""
-3 Mind Blowing Facts About {topic}
+3 Crazy Facts About {topic}
 
-1. The human brain processes information faster than a computer in some tasks.
+1. {random.choice(facts)}
+2. {random.choice(facts)}
+3. {random.choice(facts)}
 
-2. Ancient civilizations built structures we still can't fully explain.
-
-3. AI is changing the world faster than any technology before.
+Subscribe for more!
 """
 
 print(script)
