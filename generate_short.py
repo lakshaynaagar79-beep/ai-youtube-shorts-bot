@@ -33,6 +33,8 @@ script = f"""
 Subscribe for more!
 """
 
-print(script)
 with open("short_script.txt", "w") as f:
     f.write(script)
+
+print(script)
+
