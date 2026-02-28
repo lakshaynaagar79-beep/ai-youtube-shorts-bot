@@ -1,49 +1,36 @@
 import random
 import os
-import os
+import requests
 
-api_key = os.getenv("YOUTUBE_API_KEY")
+API_KEY = os.getenv("YOUTUBE_API_KEY")
 
-print("API KEY CONNECTED:", api_key is not None)
 topics = [
-"Space",
-"Ancient History",
-"Psychology",
-"Money",
-"Technology",
-"Mysteries",
-"Human Body"
-]
-
-facts = [
-"Octopuses have three hearts.",
-"The pyramids are over 4500 years old.",
-"Your brain uses about 20 percent of your body's energy.",
-"Some millionaires wake up at 5 AM daily.",
-"AI can already create music and movies.",
-"The ocean is mostly unexplored.",
-"You blink around 20000 times a day."
+    "space facts",
+    "history facts",
+    "psychology facts",
+    "technology facts",
+    "money facts"
 ]
 
 topic = random.choice(topics)
 
-script = f"""
-3 Crazy Facts About {topic}
+url = f"https://www.googleapis.com/youtube/v3/search?part=snippet&q={topic}&maxResults=5&type=video&key={API_KEY}"
 
-1. {random.choice(facts)}
-2. {random.choice(facts)}
-3. {random.choice(facts)}
+response = requests.get(url).json()
+
+titles = []
+
+for item in response["items"]:
+    titles.append(item["snippet"]["title"])
+
+script = f"""
+3 Viral Shorts Ideas About {topic}
+
+1. {random.choice(titles)}
+2. {random.choice(titles)}
+3. {random.choice(titles)}
 
 Subscribe for more!
 """
 
 print(script)
-
-with open("short_script.txt","w") as f:
-    f.write(script)
-creds = os.getenv("YOUTUBE_CREDENTIALS")
-
-if creds:
-    print("YouTube credentials connected")
-else:
-    print("Missing credentials")
