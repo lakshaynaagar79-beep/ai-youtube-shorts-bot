@@ -8,21 +8,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
-      - name: Install packages
+      - name: Install dependencies
         run: pip install requests
 
       - name: Run script
         run: python generate_short.py
-     - name: Upload script- name: Upload script
+
+      - name: Upload script
         uses: actions/upload-artifact@v4
-          with:
+        with:
           name: shorts-script
           path: short_script.txt
